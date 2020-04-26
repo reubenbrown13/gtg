@@ -86,8 +86,8 @@ def main():
             data_dir = os.path.join(xdg_data_home, "gtg")
             project_filepath = os.path.join(data_dir, "projects.xml")
             dom = parse(project_filepath)
-            xmlproject = dom.getElementsByTagName("backend")[0]
-            xmlfile = str(xmlproject.getAttribute("path"))
+            xmlproject = dom.findall("//backend")[0]
+            xmlfile = str(xmlproject.get("path"))
             xmlfile = os.path.join(data_dir, xmlfile)
 
             print("Reading tasks from %s" % (xmlfile))
